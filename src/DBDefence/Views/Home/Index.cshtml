@@ -1,0 +1,54 @@
+﻿@model DBDefense.ViewModels.IndexViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <div class="row">
+        <h1 class="col-md-5">DBDefence</h1>
+        <div class="col-md-5">
+            <img src="~/images/d-fence.jpg" height="100" />
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <h3>TestDB</h3>
+        <table class="table-responsive table-striped">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Password</th>
+                    <th>E-Mail</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var contact in Model.Contacts) {
+                    <tr>
+                        <td>
+                            @contact.FirstName
+                        </td>
+                        <td>
+                            @contact.LastName
+                        </td>
+                        <td>
+                            @contact.Password
+                        </td>
+                        <td>
+                            @contact.Email
+                        </td>
+                        <td>
+                            @contact.Phone
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
