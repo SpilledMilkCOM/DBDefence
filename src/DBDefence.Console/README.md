@@ -12,4 +12,6 @@ or possibly take SQL statement (which might be too open).
 * [DbDefence Client](https://www.database-encryption.com/support/dbdefence-documentation/bclient.html)
 * [Reading Password Characters](https://stackoverflow.com/questions/1413445/reading-a-password-from-stdcin)
 * [SetConsoleMode](https://docs.microsoft.com/en-us/windows/console/setconsolemode)
+* [LoadLibrary function](https://docs.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-loadlibrarya)
+* [GetProcAddress function](https://docs.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-getprocaddress)
 * [ASCII Characters](https://www.asciihex.com/)

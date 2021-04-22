@@ -85,6 +85,8 @@ you can follow these steps to build it on your own.)*
 * Can we install an already encrypted DB using a DAK pack?
 * Can somebody impersonate an IIS APPPOOL user?
   * All a moot point if the authentication is done through their API.
+* Is there an API to check if the database is or not encrypted.
+  * Check the list of databases?
 
 ## 📚 REF:
 
