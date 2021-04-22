@@ -35,7 +35,7 @@ namespace DBDefense.Controllers {
         }
 
         public ActionResult About() {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "A proof of concept for using the DBDefence software to encrypt databases and access them.";
 
             return View();
         }
