@@ -10,3 +10,4 @@ or possibly take SQL statement (which might be too open).
 
 * [DbDefence Command Line Encryptor](https://www.database-encryption.com/support/dbdefence-documentation/using-cmdline.html)
 * [DbDefence Client](https://www.database-encryption.com/support/dbdefence-documentation/bclient.html)
+* [Fluent Command Line Parser](http://fclp.github.io/fluent-command-line-parser/)
