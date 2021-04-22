@@ -1,4 +1,4 @@
-﻿# DbDefence.Console
+﻿# DbDefence.ConsoleCpp
 
 An executable that will connect to an encrypted database and dump out some data. This could be hard-coded
 or possibly take SQL statement (which might be too open).
@@ -10,4 +10,6 @@ or possibly take SQL statement (which might be too open).
 
 * [DbDefence Command Line Encryptor](https://www.database-encryption.com/support/dbdefence-documentation/using-cmdline.html)
 * [DbDefence Client](https://www.database-encryption.com/support/dbdefence-documentation/bclient.html)
-* [Fluent Command Line Parser](http://fclp.github.io/fluent-command-line-parser/)
+* [Reading Password Characters](https://stackoverflow.com/questions/1413445/reading-a-password-from-stdcin)
+* [SetConsoleMode](https://docs.microsoft.com/en-us/windows/console/setconsolemode)
+* [ASCII Characters](https://www.asciihex.com/)

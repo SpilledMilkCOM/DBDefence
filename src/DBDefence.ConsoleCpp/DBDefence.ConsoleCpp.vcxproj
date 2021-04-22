@@ -141,6 +141,9 @@
   <ItemGroup>
     <ClCompile Include="DBDefence.ConsoleCpp.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\dbdefence.console\README.md" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
