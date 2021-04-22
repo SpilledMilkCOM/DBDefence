@@ -92,3 +92,5 @@ you can follow these steps to build it on your own.)*
   * Also installed IIS module
   * Is free for databases up to 30 MB
 * [Documentation](https://www.database-encryption.com/support/dbdefence-documentation/)
+* [MS Understanding Identities](https://docs.microsoft.com/en-us/troubleshoot/iis/understanding-identities)
+  * Has a good section on impersonation.

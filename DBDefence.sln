@@ -11,16 +11,32 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "README", "README", "{A5DA40
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBDefence.Console", "src\DBDefence.Console\DBDefence.Console.csproj", "{314757F0-BABD-4181-9B92-45507F6EEECA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{32858BFF-F2C9-4829-AA77-0FDCF722A58C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{32858BFF-F2C9-4829-AA77-0FDCF722A58C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32858BFF-F2C9-4829-AA77-0FDCF722A58C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{32858BFF-F2C9-4829-AA77-0FDCF722A58C}.Debug|x64.Build.0 = Debug|Any CPU
 		{32858BFF-F2C9-4829-AA77-0FDCF722A58C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32858BFF-F2C9-4829-AA77-0FDCF722A58C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32858BFF-F2C9-4829-AA77-0FDCF722A58C}.Release|x64.ActiveCfg = Release|Any CPU
+		{32858BFF-F2C9-4829-AA77-0FDCF722A58C}.Release|x64.Build.0 = Release|Any CPU
+		{314757F0-BABD-4181-9B92-45507F6EEECA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{314757F0-BABD-4181-9B92-45507F6EEECA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{314757F0-BABD-4181-9B92-45507F6EEECA}.Debug|x64.ActiveCfg = Debug|x64
+		{314757F0-BABD-4181-9B92-45507F6EEECA}.Debug|x64.Build.0 = Debug|x64
+		{314757F0-BABD-4181-9B92-45507F6EEECA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{314757F0-BABD-4181-9B92-45507F6EEECA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{314757F0-BABD-4181-9B92-45507F6EEECA}.Release|x64.ActiveCfg = Release|x64
+		{314757F0-BABD-4181-9B92-45507F6EEECA}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
