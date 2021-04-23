@@ -1,13 +1,19 @@
-﻿# DbDefence.Console
+﻿# src
 
-An executable that will connect to an encrypted database and dump out some data. This could be hard-coded
-or possibly take SQL statement (which might be too open).
+### 📁 DBDefence.Console
 
-* Please pay attention to the platform!
-  * Make sure the platform is set to x64 if using the 64-bit DLLs.
+* A C# console app that connects to a small contact database and reads the Contact table.
+* Uses EntityFramework against a SQLExpress database.
+* Calls DbDefence DLL to access an ecrypted database.
 
-## 📚 REF:
+### 📁 DBDefence.ConsoleCPP
 
-* [DbDefence Command Line Encryptor](https://www.database-encryption.com/support/dbdefence-documentation/using-cmdline.html)
-* [DbDefence Client](https://www.database-encryption.com/support/dbdefence-documentation/bclient.html)
-* [Fluent Command Line Parser](http://fclp.github.io/fluent-command-line-parser/)
+* A C++ console app that connects to a small contact database and reads the Contact table.
+* Uses native SQL ODBC calls against a SQLExpress database.
+* Calls DbDefence DLL to access an ecrypted database.
+
+### 📁 DBDefence
+
+* A C# web app that connects to a small contact database and reads the Contact table.
+* Uses EntityFramework against a SQLExpress database.
+* Calls DbDefence DLL to access an ecrypted database.
