@@ -53,7 +53,14 @@ ProgramArgs ParseArgs(int argc, char* argv[]) {
     ProgramArgs result = {};
 
     if (argc > 1) {
-        int index = FindOption(argc, argv, "-d");
+
+        int index = FindOption(argc, argv, "-c");
+
+        if (index >= 0 && index + 1 < argc) {
+            result.ConnectionString = argv[index+1];
+        }
+
+        index = FindOption(argc, argv, "-d");
 
         if (index >= 0 && index + 1 < argc) {
             result.DatabaseName = argv[index+1];
@@ -70,7 +77,8 @@ ProgramArgs ParseArgs(int argc, char* argv[]) {
 }
 
 int main(int argc, char* argv[]) {
-    std::cout << "Hello World!\n";
+    // Command arguments:
+    // -d TestDBEncrypted -p Id.Like.2.Encrypt_This!NOW! -c "Driver={ODBC Driver 11 for SQL Server}; Server=localhost\SQLExpress; Database=TestDBEncrypted; Trusted_Connection=Yes; MultipleActiveResultSets=True"
 
     DumpArgs(argc, argv);
 
@@ -83,12 +91,13 @@ int main(int argc, char* argv[]) {
     std::cout << "Database Name: \"" << args.DatabaseName << "\"\n";
     std::cout << "Password     : \"" << args.Password << "\"\n";
 
+    wchar_t* connectionString = _wcsdup(ConvertToWideString(args.ConnectionString).c_str());
     wchar_t* databaseName = _wcsdup(ConvertToWideString(args.DatabaseName).c_str());
     wchar_t* password = _wcsdup(ConvertToWideString(args.Password).c_str());
 
-    //InitializeDBDefence(databaseName, password);
+    InitializeDBDefence(databaseName, password);
 
-    ReadDatabase();
+    ReadDatabase(connectionString);
 
     free(databaseName);
     free(password);

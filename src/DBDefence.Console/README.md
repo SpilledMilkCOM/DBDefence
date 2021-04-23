@@ -5,6 +5,10 @@ or possibly take SQL statement (which might be too open).
 
 * Please pay attention to the platform!
   * Make sure the platform is set to x64 if using the 64-bit DLLs.
+* ## TODO
+  
+* Encapsulate the command line parsing
+* Encapsulate the Database commands
 
 ## 📚 REF:
 
@@ -14,4 +18,6 @@ or possibly take SQL statement (which might be too open).
 * [SetConsoleMode](https://docs.microsoft.com/en-us/windows/console/setconsolemode)
 * [LoadLibrary function](https://docs.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-loadlibrarya)
 * [GetProcAddress function](https://docs.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-getprocaddress)
+* [SQLDriverConnect Function](https://docs.microsoft.com/en-us/sql/odbc/reference/syntax/sqldriverconnect-function?view=sql-server-ver15)
+  * [ODBC Connection String Options](https://docs.microsoft.com/en-us/dotnet/api/system.data.odbc.odbcconnection.connectionstring?view=dotnet-plat-ext-5.0)
 * [ASCII Characters](https://www.asciihex.com/)

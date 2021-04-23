@@ -1,3 +1,3 @@
 #pragma once
 
-void ReadDatabase();
+void ReadDatabase(const wchar_t* connectionString);

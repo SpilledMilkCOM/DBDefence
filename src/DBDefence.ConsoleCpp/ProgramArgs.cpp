@@ -8,5 +8,5 @@
 struct ProgramArgs {
     std::string ConnectionString;
     std::string DatabaseName;
-    std::string Password;
+    std::string Password;       // Password for DBDefence encryption
 };
