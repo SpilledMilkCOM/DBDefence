@@ -91,15 +91,16 @@ int main(int argc, char* argv[]) {
     std::cout << "Database Name: \"" << args.DatabaseName << "\"\n";
     std::cout << "Password     : \"" << args.Password << "\"\n";
 
-    wchar_t* connectionString = _wcsdup(ConvertToWideString(args.ConnectionString).c_str());
-    wchar_t* databaseName = _wcsdup(ConvertToWideString(args.DatabaseName).c_str());
-    wchar_t* password = _wcsdup(ConvertToWideString(args.Password).c_str());
+    wchar_t* connectionString = ConvertToWideCharT(args.ConnectionString);
+    wchar_t* databaseName = ConvertToWideCharT(args.DatabaseName);
+    wchar_t* password = ConvertToWideCharT(args.Password);
+    const wchar_t* dllPath = LR"(C:\tmp\DbDefence\dbd_clnt.dll)";
 
-    InitializeDBDefence(databaseName, password);
+    InitializeDBDefence(databaseName, password, dllPath);
 
     ReadDatabase(connectionString);
 
     free(connectionString);
-    free(databaseName);
+    free(databaseName); 
     free(password);
 }

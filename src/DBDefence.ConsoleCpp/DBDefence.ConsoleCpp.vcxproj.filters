@@ -33,6 +33,12 @@
     <ClCompile Include="ReadDatabase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DBRow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DBColumn.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GetPassword.h">
@@ -48,6 +54,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ReadDatabase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DBRow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DBColumn.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

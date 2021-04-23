@@ -1,0 +1,7 @@
+
+class DbRow {
+
+    void AddColumn() {
+
+    }
+};

@@ -1,15 +1,15 @@
 #include <Windows.h>
 
 typedef void (WINAPI* INITPROC)(BOOL);
-typedef void (WINAPI* ADDPASSWORDPROC)(const wchar_t* /*Database Name*/, const wchar_t*/*Password*/);
+typedef void (WINAPI* ADDPASSWORDPROC)(wchar_t* /*Database Name*/, wchar_t*/*Password*/);
 
-bool InitializeDBDefence(const wchar_t* databaseName, const wchar_t* password) {
+bool InitializeDBDefence(wchar_t* databaseName, wchar_t* password, const wchar_t* dllPath) {
     bool result = false;
     BOOL skipDialog = TRUE;
 
     // Get a handle to the DLL module.
 
-    HINSTANCE dllInstanceHandle = LoadLibrary(LR"(C:\tmp\DbDefence\dbd_clnt.dll)");
+    HINSTANCE dllInstanceHandle = LoadLibrary(dllPath);
 
     // If the handle is valid, try to get the function address.
 
@@ -23,8 +23,6 @@ bool InitializeDBDefence(const wchar_t* databaseName, const wchar_t* password) {
         if (NULL != InitializeProc) {
             InitializeProc(skipDialog);
         }
-
-        // Free the DLL module.
 
         ADDPASSWORDPROC AddPwdAdd = reinterpret_cast<ADDPASSWORDPROC>(GetProcAddress(dllInstanceHandle, "AddPassword"));
 

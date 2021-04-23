@@ -20,4 +20,7 @@ or possibly take SQL statement (which might be too open).
 * [GetProcAddress function](https://docs.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-getprocaddress)
 * [SQLDriverConnect Function](https://docs.microsoft.com/en-us/sql/odbc/reference/syntax/sqldriverconnect-function?view=sql-server-ver15)
   * [ODBC Connection String Options](https://docs.microsoft.com/en-us/dotnet/api/system.data.odbc.odbcconnection.connectionstring?view=dotnet-plat-ext-5.0)
+* [String Literal](https://en.cppreference.com/w/cpp/language/string_literal)
+  * `L"This is a wide character string"`
+  * `LR"(C:\raw\path\to\file.txt)"`
 * [ASCII Characters](https://www.asciihex.com/)

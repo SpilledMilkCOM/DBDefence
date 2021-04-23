@@ -1,8 +1,8 @@
 #include <iostream>
 #include <Windows.h>
-//#include <sql.h>
 #include <sqlext.h>
 
+#include "DBColumn.h"
 #include "StringUtil.h"
 
 // REF: https://docs.microsoft.com/en-us/sql/odbc/reference/syntax/odbc-api-reference?view=sql-server-ver15
@@ -76,22 +76,17 @@ void ReadDatabase(const wchar_t* connectionString) {
 
                     if (CheckSQLStatus("SQLExecDirect", status, statementHandle, SQL_HANDLE_STMT)) {
 
-                        SQLWCHAR firstName[BUFFER_SIZE] = {};
-                        SQLWCHAR lastName[BUFFER_SIZE] = {};
-                        SQLLEN firstNameLen = 0;
-                        SQLLEN lastNameLen = 0;
+                        DBColumn firstNameCol(statementHandle, "FirstName", SQL_C_WCHAR, BUFFER_SIZE, 1);
+                        DBColumn lastNameCol(statementHandle, "LastName", SQL_C_WCHAR, BUFFER_SIZE, 2);
                         bool endOfData = false;
-
-                        status = SQLBindCol(statementHandle, 1, SQL_C_WCHAR, &firstName, BUFFER_SIZE, &firstNameLen);
-                        status = SQLBindCol(statementHandle, 2, SQL_C_WCHAR, &lastName, BUFFER_SIZE, &lastNameLen);
-
-                        std::wcout << L"FirstName, LastName\n";
+ 
+                        std::cout << firstNameCol.Name() << ", " << lastNameCol.Name() << "\n";
 
                         while (!endOfData) {
                             status = SQLFetch(statementHandle);
 
                             if (status == SQL_SUCCESS || status == SQL_SUCCESS_WITH_INFO) {
-                                std::wcout << std::wstring(firstName) << L", " << std::wstring(lastName) << L"\n";
+                                std::wcout << firstNameCol.Value() << L", " << lastNameCol.Value() << L"\n";
                             } else {
                                 endOfData = true;
 
