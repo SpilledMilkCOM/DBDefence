@@ -99,6 +99,7 @@ int main(int argc, char* argv[]) {
 
     ReadDatabase(connectionString);
 
+    free(connectionString);
     free(databaseName);
     free(password);
 }
