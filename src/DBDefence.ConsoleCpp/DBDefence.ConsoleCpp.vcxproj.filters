@@ -35,9 +35,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\dbdefence.console\README.md" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="GetPassword.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -53,5 +50,8 @@
     <ClInclude Include="ReadDatabase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
   </ItemGroup>
 </Project>

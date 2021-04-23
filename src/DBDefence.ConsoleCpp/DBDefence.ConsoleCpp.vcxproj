@@ -147,14 +147,14 @@
     <ClCompile Include="StringUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\dbdefence.console\README.md" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="DbDefenceInit.h" />
     <ClInclude Include="GetPassword.h" />
     <ClInclude Include="ProgramArgs.h" />
     <ClInclude Include="ReadDatabase.h" />
     <ClInclude Include="StringUtil.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
