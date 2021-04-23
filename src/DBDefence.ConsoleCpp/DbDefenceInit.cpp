@@ -1,9 +1,9 @@
 #include <Windows.h>
 
 typedef void (WINAPI* INITPROC)(BOOL);
-typedef void (WINAPI* ADDPASSWORDPROC)(wchar_t* /*Database*/, wchar_t*/*Password*/);
+typedef void (WINAPI* ADDPASSWORDPROC)(const wchar_t* /*Database*/, const wchar_t*/*Password*/);
 
-bool InitializeDBDefence(wchar_t* databaseName, wchar_t* password) {
+bool InitializeDBDefence(const wchar_t* databaseName, const wchar_t* password) {
     bool result = false;
 
     // Get a handle to the DLL module.

@@ -1,3 +1,3 @@
 #pragma once
 
-bool InitializeDBDefence(wchar_t* databaseName, wchar_t* password);
+bool InitializeDBDefence(const wchar_t* databaseName, const wchar_t* password);
