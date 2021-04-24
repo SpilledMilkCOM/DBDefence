@@ -5,10 +5,17 @@ or possibly take SQL statement (which might be too open).
 
 * Please pay attention to the platform!
   * Make sure the platform is set to x64 if using the 64-bit DLLs.
+
+
 * ## TODO
   
 * Encapsulate the command line parsing
-* Encapsulate the Database commands
+* 🏗️ Encapsulate the Database connection and table *(in progress)*
+
+## DONE
+
+* ✅ Execute raw SQL to obtain a connection and data from a table.
+* ✅ Encapsulated database row and column
 
 ## 📚 REF:
 
