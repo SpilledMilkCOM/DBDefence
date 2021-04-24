@@ -7,12 +7,12 @@ or possibly take SQL statement (which might be too open).
   * Make sure the platform is set to x64 if using the 64-bit DLLs.
 
 
-* ## TODO
+## 🤞 TODO
   
 * Encapsulate the command line parsing
 * 🏗️ Encapsulate the Database connection and table *(in progress)*
 
-## DONE
+## ✨ DONE
 
 * ✅ Execute raw SQL to obtain a connection and data from a table.
 * ✅ Encapsulated database row and column
