@@ -139,20 +139,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ContactTable.cpp" />
     <ClCompile Include="DBColumn.cpp" />
+    <ClCompile Include="DBConnection.cpp" />
     <ClCompile Include="DBDefence.ConsoleCpp.cpp" />
     <ClCompile Include="DbDefenceInit.cpp" />
     <ClCompile Include="DBRow.cpp" />
+    <ClCompile Include="DBTable.cpp" />
     <ClCompile Include="GetPassword.cpp" />
+    <ClCompile Include="LoggerStdOut.cpp" />
     <ClCompile Include="ProgramArgs.cpp" />
     <ClCompile Include="ReadDatabase.cpp" />
+    <ClCompile Include="SQLUtil.cpp" />
     <ClCompile Include="StringUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ContactTable.h" />
     <ClInclude Include="DBColumn.h" />
+    <ClInclude Include="DBConnection.h" />
     <ClInclude Include="DbDefenceInit.h" />
     <ClInclude Include="DBRow.h" />
+    <ClInclude Include="DBTable.h" />
     <ClInclude Include="GetPassword.h" />
+    <ClInclude Include="SQLUtil.h" />
+    <ClInclude Include="LoggerStdOut.h" />
     <ClInclude Include="ProgramArgs.h" />
     <ClInclude Include="ReadDatabase.h" />
     <ClInclude Include="StringUtil.h" />

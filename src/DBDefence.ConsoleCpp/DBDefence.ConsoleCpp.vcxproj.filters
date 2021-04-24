@@ -39,6 +39,21 @@
     <ClCompile Include="DBColumn.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DBTable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ContactTable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DBConnection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LoggerStdOut.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SQLUtil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GetPassword.h">
@@ -60,6 +75,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DBColumn.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DBTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ContactTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DBConnection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LoggerStdOut.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SQLUtil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -20,19 +20,19 @@ private:
     unsigned int _size = 0;
     unsigned int _type = 0;
 
-    string _name;
+    wstring _name;
     SQLWCHAR* _buffer = NULL;
     SQLRETURN _status = SQL_SUCCESS;
 
 public:
 
-    DBColumn(string name, int type, int size, int columnNumber);
-    DBColumn(SQLHSTMT statementHandle, string name, int type, int size, int columnNumber);
+    DBColumn(wstring name, int type, int size, int columnNumber);
+    DBColumn(SQLHSTMT statementHandle, wstring name, int type, int size, int columnNumber);
     ~DBColumn();
 
     SQLRETURN Bind(SQLHSTMT statementHandle);
 
-    string Name();
+    wstring Name();
     SQLRETURN Status();
     wstring Value();
 };

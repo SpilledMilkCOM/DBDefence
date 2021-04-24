@@ -2,7 +2,7 @@
 #include <Windows.h>
 #include <sqlext.h>
 
-#include "DBColumn.h"
+#include "DBRow.h"
 #include "StringUtil.h"
 
 // REF: https://docs.microsoft.com/en-us/sql/odbc/reference/syntax/odbc-api-reference?view=sql-server-ver15
@@ -76,17 +76,19 @@ void ReadDatabase(const wchar_t* connectionString) {
 
                     if (CheckSQLStatus("SQLExecDirect", status, statementHandle, SQL_HANDLE_STMT)) {
 
-                        DBColumn firstNameCol(statementHandle, "FirstName", SQL_C_WCHAR, BUFFER_SIZE, 1);
-                        DBColumn lastNameCol(statementHandle, "LastName", SQL_C_WCHAR, BUFFER_SIZE, 2);
+                        DBRow contactRow(statementHandle);
                         bool endOfData = false;
+
+                        contactRow.AddColumn(new DBColumn(L"FirstName", SQL_C_WCHAR, BUFFER_SIZE, 1));
+                        contactRow.AddColumn(new DBColumn(L"LastName", SQL_C_WCHAR, BUFFER_SIZE, 2));
  
-                        std::cout << firstNameCol.Name() << ", " << lastNameCol.Name() << "\n";
+                        std::wcout << contactRow.ColumnNames() << "\n";
 
                         while (!endOfData) {
                             status = SQLFetch(statementHandle);
 
                             if (status == SQL_SUCCESS || status == SQL_SUCCESS_WITH_INFO) {
-                                std::wcout << firstNameCol.Value() << L", " << lastNameCol.Value() << L"\n";
+                                std::wcout << contactRow.ColumnValues() << L"\n";
                             } else {
                                 endOfData = true;
 
@@ -95,6 +97,8 @@ void ReadDatabase(const wchar_t* connectionString) {
                                 }
                             }
                         }
+
+                        contactRow.DeleteColumns();
                     }
                 }
 

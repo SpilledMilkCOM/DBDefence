@@ -4,7 +4,7 @@ using namespace std;
 
 //----==== CONSTRUCTOR(S) / DESTRUCTOR(S) ====-----------------------------------------------------
 
-DBColumn::DBColumn(string name, int type, int size, int columnNumber) {
+DBColumn::DBColumn(wstring name, int type, int size, int columnNumber) {
 
     if (name.empty()) {
         throw new exception("'name' cannot be empty.");
@@ -23,11 +23,11 @@ DBColumn::DBColumn(string name, int type, int size, int columnNumber) {
     _size = size;
     _columnNumber = columnNumber;
 
-    _buffer = new SQLWCHAR[_size + 1];
-    _buffer[0] = 0;
+    _buffer = (SQLWCHAR*)malloc((_size + 1) * sizeof(SQLWCHAR));
+    *_buffer = 0;
 }
 
-DBColumn::DBColumn(SQLHSTMT statementHandle, string name, int type, int size, int columnNumber)
+DBColumn::DBColumn(SQLHSTMT statementHandle, wstring name, int type, int size, int columnNumber)
     : DBColumn(name, type, size, columnNumber) {
 
     Bind(statementHandle);
@@ -35,7 +35,8 @@ DBColumn::DBColumn(SQLHSTMT statementHandle, string name, int type, int size, in
 
 DBColumn::~DBColumn() {
     if (_buffer != NULL) {
-        free(_buffer);
+        // TODO: MEMORY LEAK!!
+        //free(_buffer);
         _buffer = NULL;
     }
 
@@ -56,7 +57,7 @@ DBColumn::Bind(SQLHSTMT statementHandle) {
 
 //----==== PROPERTIES ====-------------------------------------------------------------------------
 
-string
+wstring
 DBColumn::Name() {
     return _name;
 }

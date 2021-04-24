@@ -23,4 +23,6 @@ or possibly take SQL statement (which might be too open).
 * [String Literal](https://en.cppreference.com/w/cpp/language/string_literal)
   * `L"This is a wide character string"`
   * `LR"(C:\raw\path\to\file.txt)"`
+* [malloc/free vs new/delete](https://www.geeksforgeeks.org/new-vs-malloc-and-free-vs-delete-in-c/)
+  * new/delete calls constructor/destructor, malloc/free does not.
 * [ASCII Characters](https://www.asciihex.com/)
