@@ -9,6 +9,8 @@
 #include "StringUtil.h"
 //#include "../../../../Windows/Microsoft.NET/Framework/v4.0.30319/mscorlib.dll"
 
+using namespace std;
+
 /// <summary>
 /// Write the argument count and arguments to the console
 /// </summary>
@@ -88,8 +90,9 @@ int main(int argc, char* argv[]) {
         args.Password = GetPassword("\nEnter the password: ", '*');
     }
 
-    std::cout << "Database Name: \"" << args.DatabaseName << "\"\n";
-    std::cout << "Password     : \"" << args.Password << "\"\n";
+    cout << "\n";
+    cout << "Database Name: \"" << args.DatabaseName << "\"\n";
+    cout << "Password     : \"" << args.Password << "\"\n";
 
     wchar_t* connectionString = ConvertToWideCharT(args.ConnectionString);
     wchar_t* databaseName = ConvertToWideCharT(args.DatabaseName);
