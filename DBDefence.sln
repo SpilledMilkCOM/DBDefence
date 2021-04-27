@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBDefence.Console", "src\DB
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DBDefence.ConsoleCpp", "src\DBDefence.ConsoleCpp\DBDefence.ConsoleCpp.vcxproj", "{3DA181D9-7063-4CF5-893D-4EE46DE5F264}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DBDefence.ConsoleCpp.Tests", "src\DBDefence.ConsoleCpp.Tests\DBDefence.ConsoleCpp.Tests.vcxproj", "{E8206382-7EA1-4B20-A71B-829612389DE4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,6 +62,16 @@ Global
 		{3DA181D9-7063-4CF5-893D-4EE46DE5F264}.Release|x64.Build.0 = Release|x64
 		{3DA181D9-7063-4CF5-893D-4EE46DE5F264}.Release|x86.ActiveCfg = Release|Win32
 		{3DA181D9-7063-4CF5-893D-4EE46DE5F264}.Release|x86.Build.0 = Release|Win32
+		{E8206382-7EA1-4B20-A71B-829612389DE4}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{E8206382-7EA1-4B20-A71B-829612389DE4}.Debug|x64.ActiveCfg = Debug|x64
+		{E8206382-7EA1-4B20-A71B-829612389DE4}.Debug|x64.Build.0 = Debug|x64
+		{E8206382-7EA1-4B20-A71B-829612389DE4}.Debug|x86.ActiveCfg = Debug|Win32
+		{E8206382-7EA1-4B20-A71B-829612389DE4}.Debug|x86.Build.0 = Debug|Win32
+		{E8206382-7EA1-4B20-A71B-829612389DE4}.Release|Any CPU.ActiveCfg = Release|Win32
+		{E8206382-7EA1-4B20-A71B-829612389DE4}.Release|x64.ActiveCfg = Release|x64
+		{E8206382-7EA1-4B20-A71B-829612389DE4}.Release|x64.Build.0 = Release|x64
+		{E8206382-7EA1-4B20-A71B-829612389DE4}.Release|x86.ActiveCfg = Release|Win32
+		{E8206382-7EA1-4B20-A71B-829612389DE4}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

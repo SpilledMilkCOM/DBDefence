@@ -12,11 +12,30 @@ ArgumentParser::~ArgumentParser() {
 
 //----==== PUBLIC ====-----------------------------------------------------------------------------
 
-void
+/// <summary>
+/// Add an option to the known options for the parser
+/// Cannot add duplicate options
+/// </summary>
+/// <param name="option">An option</param>
+/// <returns>If the option was added or not</returns>
+bool
 ArgumentParser::AddOption(ArgumentOption* option) {
-    _options.push_back(option);
+    if (option == NULL) {
+        throw new exception("'option' must be defined.");
+    }
+
+    bool added = !HasOption(option->Option());
+
+    if (added) {
+        _options.push_back(option);
+    }
+
+    return added;
 }
 
+/// <summary>
+/// Deletes the options from memory
+/// </summary>
 void
 ArgumentParser::DeleteOptions() {
     for (ArgumentOption* option : _options) {
@@ -42,6 +61,11 @@ ArgumentParser::DumpArgs(int argc, char* argv[]) {
     return result;
 }
 
+/// <summary>
+/// Get the value of a parsed option
+/// </summary>
+/// <param name="optionFlag">Designated option</param>
+/// <returns>The value of the found option (empty if not found)</returns>
 string
 ArgumentParser::GetValue(string optionFlag) {
     ArgumentOption* option = FindOption(optionFlag);
@@ -60,6 +84,23 @@ ArgumentParser::GetValue(string optionFlag) {
     return result;
 }
 
+/// <summary>
+/// Check whether the option was found during parsing.
+/// </summary>
+/// <param name="option">The Option</param>
+/// <returns>Found during parsing or not.</returns>
+bool
+ArgumentParser::HasOption(string optionFlag) {
+    ArgumentOption* option = FindOption(optionFlag);
+    bool result = false;
+
+    if (option != NULL) {
+        result = option->Found();
+    }
+
+    return result;
+}
+
 void
 ArgumentParser::Parse(int argc, char* argv[]) {
 
@@ -67,6 +108,8 @@ ArgumentParser::Parse(int argc, char* argv[]) {
         int index = FindArgument(option->Option(), argc, argv);
 
         if (index >= 0 && index + 1 < argc) {
+            option->Found(true);
+
             option->Value(argv[index+1]);
         }
     }
@@ -106,6 +149,8 @@ ArgumentParser::Usage() {
 
     return result;
 }
+
+//----==== PRIVATE ====----------------------------------------------------------------------------
 
 int
 ArgumentParser::FindArgument(string option, int argc, char* argv[]) {

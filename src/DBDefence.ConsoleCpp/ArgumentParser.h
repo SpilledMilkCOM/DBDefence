@@ -16,10 +16,11 @@ public:
     ArgumentParser(string programName);
     ~ArgumentParser();
 
-    void AddOption(ArgumentOption* option);
+    bool AddOption(ArgumentOption* option);
     void DeleteOptions();
     string DumpArgs(int argc, char* argv[]);
     string GetValue(string option);
+    bool HasOption(string option);
     void Parse(int argc, char* argv[]);
     string Usage();
 

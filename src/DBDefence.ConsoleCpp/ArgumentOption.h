@@ -9,9 +9,9 @@ class ArgumentOption {
 private:
 
     string _description;
-    bool _found;
+    bool _found = false;
     string _option;
-    bool _required;
+    bool _required = false;
     string _value;
     string _valueName;
 
@@ -20,7 +20,8 @@ public:
     ArgumentOption(string option, string valueName, string description, bool required);
 
     string Description();
-    bool HasOption(string option);
+    bool Found();
+    bool Found(bool found);
     string Option();
     bool Required();
     string Value();

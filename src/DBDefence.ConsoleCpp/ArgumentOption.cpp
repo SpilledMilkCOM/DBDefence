@@ -7,6 +7,8 @@ ArgumentOption::ArgumentOption(string option, string valueName, string descripti
     _description = description;
     _required = required;
     _valueName = valueName;
+
+    _found = false;
 }
 
 //----==== PROPERTIES ====-------------------------------------------------------------------------
@@ -14,6 +16,20 @@ ArgumentOption::ArgumentOption(string option, string valueName, string descripti
 string
 ArgumentOption::Description() {
     return _description;
+}
+
+bool
+ArgumentOption::Found() {
+    return _found;
+}
+
+bool
+ArgumentOption::Found(bool found) {
+    bool result = _found;
+
+    _found = found;
+
+    return result;
 }
 
 string
