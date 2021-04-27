@@ -1,8 +1,12 @@
 #include "DBTable.h"
 
+// TODO: Change name to DBDataReader
+
 //----==== CONSTRUCTOR(S) / DESTRUCTOR(S) ====-----------------------------------------------------
 
-DBTable::DBTable() {
+DBTable::DBTable(DBConnection* connection) {
+
+    _connection = connection;
 
     _row = new DBRow();
 
@@ -10,12 +14,20 @@ DBTable::DBTable() {
     _sqlUtil = new SQLUtil(NULL);
 }
 
-DBTable::DBTable(wstring tableName, SQLUtil* sqlUtil) {
+DBTable::DBTable(DBConnection* connection, wstring tableName, SQLUtil* sqlUtil) {
+
+    _connection = connection;
 
     _row = new DBRow();
 
     _tableName = tableName;
-    _sqlUtil = sqlUtil;
+
+    if (sqlUtil == NULL) {
+        _allocatedDefault = true;
+        _sqlUtil = new SQLUtil(NULL);
+    } else {
+        _sqlUtil = sqlUtil;
+    }
 }
 
 DBTable::~DBTable() {
@@ -31,25 +43,34 @@ DBTable::~DBTable() {
     _sqlUtil = NULL;
 }
 
+//----==== PROPERTIES ====-------------------------------------------------------------------------
+
+wstring
+DBTable::Statement() {
+    return (_statement == NULL) ? wstring() : _statement->Statement();
+}
+
+wstring
+DBTable::Statement(wstring statement) {
+    wstring previousStatement = Statement();
+
+    if (_statement != NULL) {
+        delete(_statement);
+        _statement = NULL;
+    }
+
+    _statement = new DBStatement(statement, _connection, _row, _sqlUtil);
+
+    return previousStatement;
+}
+
 //----==== PUBLIC ====-----------------------------------------------------------------------------
 
 void
 DBTable::Read() {
-    // Fetch all of the rows from the select statement.
-
-    bool endOfData = false;
-
-    while (!endOfData) {
-        _status = SQLFetch(_statementHandle);
-
-        if (_status == SQL_SUCCESS || _status == SQL_SUCCESS_WITH_INFO) {
+    if (_statement != NULL) {
+        while (_statement->Fetch()) {
             OutputRow();
-        } else {
-            endOfData = true;
-
-            if (_status != SQL_NO_DATA) {
-                _sqlUtil->CheckSQLStatus("SQLFetch", _status, _statementHandle, SQL_HANDLE_STMT);
-            }
         }
     }
 }

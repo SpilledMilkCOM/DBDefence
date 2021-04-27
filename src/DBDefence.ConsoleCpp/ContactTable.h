@@ -2,11 +2,11 @@
 
 #include "DBTable.h"
 
-class ContactTable : DBTable {
+class ContactTable : public DBTable {
 
 public:
 
-    ContactTable();
+    ContactTable(DBConnection* connection);
 
     virtual void OutputRow();
 };

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "DBStatement.h"
 #include "DBRow.h"
 #include "SQLUtil.h"
 
@@ -15,21 +16,25 @@ protected:
 
 private:
 
+    DBConnection* _connection = NULL;
     LoggerStdOut* _logger = NULL;
     bool _allocatedDefault = false;
     SQLUtil* _sqlUtil = NULL;
-    SQLHSTMT _statementHandle = SQL_NULL_HSTMT;
+    DBStatement* _statement = NULL;
     SQLRETURN _status = SQL_SUCCESS;
     wstring _tableName;
 
 public:
 
-    DBTable();
-    DBTable(wstring tableName, SQLUtil* sqlUtil);
+    DBTable(DBConnection* connection);
+    DBTable(DBConnection* connection, wstring tableName, SQLUtil* sqlUtil);
     ~DBTable();
 
     virtual void OutputRow() = 0;
     void Read();
+
+    wstring Statement();
+    wstring Statement(wstring statement);
 
 protected:
 

@@ -145,6 +145,7 @@
     <ClCompile Include="DBDefence.ConsoleCpp.cpp" />
     <ClCompile Include="DbDefenceInit.cpp" />
     <ClCompile Include="DBRow.cpp" />
+    <ClCompile Include="DBStatement.cpp" />
     <ClCompile Include="DBTable.cpp" />
     <ClCompile Include="GetPassword.cpp" />
     <ClCompile Include="LoggerStdOut.cpp" />
@@ -159,6 +160,7 @@
     <ClInclude Include="DBConnection.h" />
     <ClInclude Include="DbDefenceInit.h" />
     <ClInclude Include="DBRow.h" />
+    <ClInclude Include="DBStatement.h" />
     <ClInclude Include="DBTable.h" />
     <ClInclude Include="GetPassword.h" />
     <ClInclude Include="SQLUtil.h" />

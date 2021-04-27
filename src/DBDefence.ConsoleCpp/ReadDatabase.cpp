@@ -2,6 +2,8 @@
 #include <Windows.h>
 #include <sqlext.h>
 
+#include "ContactTable.h"
+#include "DBConnection.h"
 #include "DBRow.h"
 #include "StringUtil.h"
 
@@ -18,16 +20,16 @@ bool CheckSQLStatus(const char* sqlFunctionName, SQLRETURN status, SQLHANDLE sql
         SQLINTEGER nativeError = 0;
         SQLSMALLINT messageLength = 0;
 
-        std::cout << sqlFunctionName << "(): " << status << "\n";
+        cout << sqlFunctionName << "(): " << status << "\n";
 
         //status = SQLGetDiagField();
 
         status = SQLGetDiagRec(sqlHandleType, sqlHandle, 1, sqlState, &nativeError, messageText, BUFFER_SIZE, &messageLength);
 
-        std::wcout << "SQLGetDiagRec: " << status << "\n";
-        std::wcout << "SQL State    : " << std::wstring(sqlState) << "\n";
-        std::wcout << "Message      : " << std::wstring(messageText) << "\n";
-        std::wcout << "Native Error : " << nativeError << "\n";
+        wcout << "SQLGetDiagRec: " << status << "\n";
+        wcout << "SQL State    : " << wstring(sqlState) << "\n";
+        wcout << "Message      : " << wstring(messageText) << "\n";
+        wcout << "Native Error : " << nativeError << "\n";
     }
 
     return result;
@@ -81,7 +83,7 @@ void ReadDatabase(const wchar_t* connectionString) {
 
                         contactRow.AddColumn(new DBColumn(L"FirstName", SQL_C_WCHAR, BUFFER_SIZE, 1));
                         contactRow.AddColumn(new DBColumn(L"LastName", SQL_C_WCHAR, BUFFER_SIZE, 2));
- 
+
                         std::wcout << contactRow.ColumnNames() << "\n";
 
                         while (!endOfData) {
@@ -109,4 +111,23 @@ void ReadDatabase(const wchar_t* connectionString) {
         }
         SQLFreeHandle(SQL_HANDLE_ENV, envHandle);
     }
+}
+
+void ReadDatabase2(const wchar_t* connectionString) {
+
+    const int BUFFER_SIZE = 255;
+
+    DBConnection connection;
+    SQLRETURN status;
+
+    connection.ConnectionString(connectionString);
+
+    if (connection.Connect()) {
+
+        ContactTable contacts(&connection);
+
+        contacts.DBTable::Read();
+    }
+
+    status = connection.Disconnect();
 }

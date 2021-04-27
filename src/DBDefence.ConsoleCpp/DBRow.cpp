@@ -37,9 +37,9 @@ DBRow::Bind(SQLHSTMT statementHandle) {
     return _status;
 }
 
-std::wstring
-DBRow::ColumnNames(std::wstring delimiter) {
-    std::wstring result;
+wstring
+DBRow::ColumnNames(wstring delimiter) {
+    wstring result;
 
     for (DBColumn* column : _columns) {
         if (!result.empty()) {
@@ -52,9 +52,9 @@ DBRow::ColumnNames(std::wstring delimiter) {
     return result;
 }
 
-std::wstring
-DBRow::ColumnValues(std::wstring delimiter) {
-    std::wstring result;
+wstring
+DBRow::ColumnValues(wstring delimiter) {
+    wstring result;
 
     for (DBColumn* column : _columns) {
         if (!result.empty()) {
@@ -67,7 +67,8 @@ DBRow::ColumnValues(std::wstring delimiter) {
     return result;
 }
 
-void DBRow::DeleteColumns() {
+void
+DBRow::DeleteColumns() {
     for (DBColumn* column : _columns) {
         delete(column);
     }

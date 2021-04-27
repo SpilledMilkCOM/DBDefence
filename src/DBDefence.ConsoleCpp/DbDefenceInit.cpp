@@ -32,7 +32,7 @@ bool InitializeDBDefence(wchar_t* databaseName, wchar_t* password, const wchar_t
         }
 #pragma warning( pop )
 
-        result &= FreeLibrary(dllInstanceHandle);
+        result &= (FreeLibrary(dllInstanceHandle)) ? true : false;
     }
 
     return result;

@@ -25,5 +25,4 @@ public:
     wstring ColumnNames(wstring delimiter = L", ");
     wstring ColumnValues(wstring delimiter = L", ");
     void DeleteColumns();
-
 };

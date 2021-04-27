@@ -98,7 +98,8 @@ int main(int argc, char* argv[]) {
 
     InitializeDBDefence(databaseName, password, dllPath);
 
-    ReadDatabase(connectionString);
+    //ReadDatabase(connectionString);
+    ReadDatabase2(connectionString);
 
     free(connectionString);
     free(databaseName); 

@@ -20,19 +20,21 @@ private:
     SQLHDBC _connectionHandle = SQL_NULL_HDBC;
     wstring _connectionString;
     SQLHENV _envHandle = SQL_NULL_HENV;
-    LoggerStdOut* _logger = NULL;
-    bool _loggerAllocated = false;
     SQLUtil* _sqlUtil = NULL;
+    bool _sqlUtilAllocated = false;
     SQLRETURN _status = SQL_SUCCESS;
 
 public:
 
     DBConnection();
-    DBConnection(wstring connectionString, SQLUtil* sqlUtil, LoggerStdOut* logger = NULL);
+    DBConnection(wstring connectionString, SQLUtil* sqlUtil);
     ~DBConnection();
 
-    SQLRETURN Connect();
+    bool Connect();
+    bool Disconnect();
 
+    SQLHDBC ConnectionHandle();
     wstring ConnectionString();
     wstring ConnectionString(wstring connectionString);
+    SQLRETURN Status();
 };
