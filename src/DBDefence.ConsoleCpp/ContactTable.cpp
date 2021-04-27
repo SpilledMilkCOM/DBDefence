@@ -10,7 +10,7 @@ ContactTable::ContactTable(DBConnection* connection)
     _row->AddColumn(new DBColumn(L"FirstName", SQL_C_WCHAR, BUFFER_SIZE, 1));
     _row->AddColumn(new DBColumn(L"LastName", SQL_C_WCHAR, BUFFER_SIZE, 2));
 
-    Statement(L"SELECT FirstName, LastName FROM dbo.Contact");
+    Statement(L"SELECT FirstName, LastName FROM Contact");
 }
 
 /// <summary>

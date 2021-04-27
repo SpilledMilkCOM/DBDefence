@@ -35,7 +35,7 @@ bool CheckSQLStatus(const char* sqlFunctionName, SQLRETURN status, SQLHANDLE sql
     return result;
 }
 
-void ReadDatabase(const wchar_t* connectionString) {
+void ReadDatabase1(const wchar_t* connectionString) {
 
     const int BUFFER_SIZE = 255;
 
@@ -113,7 +113,7 @@ void ReadDatabase(const wchar_t* connectionString) {
     }
 }
 
-void ReadDatabase2(const wchar_t* connectionString) {
+void ReadDatabase(const wchar_t* connectionString) {
 
     const int BUFFER_SIZE = 255;
 

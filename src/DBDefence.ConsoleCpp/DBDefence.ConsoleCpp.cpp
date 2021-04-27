@@ -2,46 +2,25 @@
 //#include <minwinbase.h>
 #include <string>
 
+#include "ArgumentParser.h"
 #include "DbDefenceInit.h"
 #include "GetPassword.h"
-#include "ProgramArgs.h"
+#include "ProgramConfiguration.h"
 #include "ReadDatabase.h"
 #include "StringUtil.h"
 //#include "../../../../Windows/Microsoft.NET/Framework/v4.0.30319/mscorlib.dll"
 
+const string CONNECTION_OPTION = "-c";
+const string DATABASE_OPTION = "-d";
+const string PASSWORD_OPTION = "-p";
+
 using namespace std;
 
-/// <summary>
-/// Write the argument count and arguments to the console
-/// </summary>
-/// <param name="argc">Argument count from the command line</param>
-/// <param name="argv">Arguments from the command line</param>
-void DumpArgs(int argc, char* argv[]) {
-    std::cout << "argc=" << argc << "\n";
+void InitializeArguments(ArgumentParser* argParser) {
 
-    for (int index = 0; index < argc; index++) {
-        std::cout << "argv=" << argv[index] << "\n";
-    }
-}
-
-/// <summary>
-/// 
-/// </summary>
-/// <param name="argc"></param>
-/// <param name="argv"></param>
-/// <param name="option"></param>
-/// <returns></returns>
-int FindOption(int argc, char* argv[], std::string option) {
-    int result = -1;
-
-    for (int index = 0; index < argc; index++) {
-        if (argv[index] == option) {
-            result = index;
-            break;
-        }
-    }
-
-    return result;
+    argParser->AddOption(new ArgumentOption(CONNECTION_OPTION, "ConnectionString", "The full connection string of the database.", true));
+    argParser->AddOption(new ArgumentOption(DATABASE_OPTION, "DatabaseName", "The name of the encrypted database.", true));
+    argParser->AddOption(new ArgumentOption(PASSWORD_OPTION, "Password", "The password of the encrypted.", true));
 }
 
 /// <summary>
@@ -50,30 +29,16 @@ int FindOption(int argc, char* argv[], std::string option) {
 /// <param name="argc">Argument count from the command line</param>
 /// <param name="argv">Arguments from the command line</param>
 /// <returns>The populated ProgramArgs based on the parsed command line arguments</returns>
-ProgramArgs ParseArgs(int argc, char* argv[]) {
+ProgramConfiguration ParseArgs(ArgumentParser* argParser, int argc, char* argv[]) {
+    ProgramConfiguration result = {};
 
-    ProgramArgs result = {};
+    InitializeArguments(argParser);
 
-    if (argc > 1) {
+    argParser->Parse(argc, argv);
 
-        int index = FindOption(argc, argv, "-c");
-
-        if (index >= 0 && index + 1 < argc) {
-            result.ConnectionString = argv[index+1];
-        }
-
-        index = FindOption(argc, argv, "-d");
-
-        if (index >= 0 && index + 1 < argc) {
-            result.DatabaseName = argv[index+1];
-        }
-
-        index = FindOption(argc, argv, "-p");
-
-        if (index >= 0 && index + 1 < argc) {
-            result.Password = argv[index+1];
-        }
-    }
+    result.ConnectionString = argParser->GetValue(CONNECTION_OPTION);
+    result.DatabaseName = argParser->GetValue(DATABASE_OPTION);
+    result.Password = argParser->GetValue(PASSWORD_OPTION);
 
     return result;
 }
@@ -82,9 +47,11 @@ int main(int argc, char* argv[]) {
     // Command arguments:
     // -d TestDBEncrypted -p Id.Like.2.Encrypt_This!NOW! -c "Driver={ODBC Driver 11 for SQL Server}; Server=localhost\SQLExpress; Database=TestDBEncrypted; Trusted_Connection=Yes; MultipleActiveResultSets=True"
 
-    DumpArgs(argc, argv);
+    ArgumentParser argParser("DbDecrypt");
 
-    ProgramArgs args = ParseArgs(argc, argv);
+    cout << argParser.DumpArgs(argc, argv);
+
+    ProgramConfiguration args = ParseArgs(&argParser, argc, argv);
 
     if (args.Password.empty()) {
         args.Password = GetPassword("\nEnter the password: ", '*');
@@ -92,7 +59,7 @@ int main(int argc, char* argv[]) {
 
     cout << "\n";
     cout << "Database Name: \"" << args.DatabaseName << "\"\n";
-    cout << "Password     : \"" << args.Password << "\"\n";
+    cout << "Password     : \"" << args.Password << "\"\n\n\n";
 
     wchar_t* connectionString = ConvertToWideCharT(args.ConnectionString);
     wchar_t* databaseName = ConvertToWideCharT(args.DatabaseName);
@@ -101,8 +68,7 @@ int main(int argc, char* argv[]) {
 
     InitializeDBDefence(databaseName, password, dllPath);
 
-    //ReadDatabase(connectionString);
-    ReadDatabase2(connectionString);
+    ReadDatabase(connectionString);
 
     free(connectionString);
     free(databaseName); 

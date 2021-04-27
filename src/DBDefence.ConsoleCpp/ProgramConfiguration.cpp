@@ -5,7 +5,7 @@
 /// A string is used since command line arguments are char* and wchar_t*
 /// </summary>
 
-struct ProgramArgs {
+struct ProgramConfiguration {
     std::string ConnectionString;
     std::string DatabaseName;
     std::string Password;       // Password for DBDefence encryption

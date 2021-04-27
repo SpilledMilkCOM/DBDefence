@@ -2,7 +2,7 @@
 
 #include <string>
 
-struct ProgramArgs {
+struct ProgramConfiguration {
     std::string ConnectionString;
     std::string DatabaseName;
     std::string Password;

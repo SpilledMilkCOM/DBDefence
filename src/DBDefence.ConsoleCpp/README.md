@@ -33,3 +33,4 @@ or possibly take SQL statement (which might be too open).
 * [malloc/free vs new/delete](https://www.geeksforgeeks.org/new-vs-malloc-and-free-vs-delete-in-c/)
   * new/delete calls constructor/destructor, malloc/free does not.
 * [ASCII Characters](https://www.asciihex.com/)
+* [C++ Reverse Disassembly](https://www.codeproject.com/articles/4210/c-reverse-disassembly)
