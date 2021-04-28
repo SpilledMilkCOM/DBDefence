@@ -113,12 +113,12 @@ void ReadDatabase1(const wchar_t* connectionString) {
     }
 }
 
-void ReadDatabase(const wchar_t* connectionString) {
+SQLRETURN ReadDatabase(const wchar_t* connectionString) {
 
     const int BUFFER_SIZE = 255;
 
     DBConnection connection;
-    SQLRETURN status;
+    SQLRETURN status = SQL_SUCCESS;
 
     connection.ConnectionString(connectionString);
 
@@ -127,7 +127,12 @@ void ReadDatabase(const wchar_t* connectionString) {
         ContactTable contacts(&connection);
 
         contacts.DBTable::Read();
+
+        status = connection.Disconnect();
+    }
+    else {
+        status = connection.Status();
     }
 
-    status = connection.Disconnect();
+    return status;
 }
