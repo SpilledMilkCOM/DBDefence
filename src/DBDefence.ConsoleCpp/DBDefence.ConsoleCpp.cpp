@@ -1,5 +1,4 @@
 #include <iostream>
-//#include <minwinbase.h>
 #include <string>
 
 #include "ArgumentParser.h"
@@ -8,7 +7,6 @@
 #include "ProgramConfiguration.h"
 #include "ReadDatabase.h"
 #include "StringUtil.h"
-//#include "../../../../Windows/Microsoft.NET/Framework/v4.0.30319/mscorlib.dll"
 
 const string CONNECTION_OPTION = "-c";
 const string DATABASE_OPTION = "-d";
@@ -17,6 +15,10 @@ const string USAGE_OPTION = "-?";
 
 using namespace std;
 
+/// <summary>
+/// Add all of the arguments to the parser
+/// </summary>
+/// <param name="argParser">The argument parser</param>
 void
 InitializeArguments(ArgumentParser* argParser) {
 
@@ -29,9 +31,11 @@ InitializeArguments(ArgumentParser* argParser) {
 /// <summary>
 /// Parse the command line arguments
 /// </summary>
+/// <param name="argParser">Argument parser</param>
 /// <param name="argc">Argument count from the command line</param>
 /// <param name="argv">Arguments from the command line</param>
-/// <returns>The populated ProgramArgs based on the parsed command line arguments</returns>
+/// <param name="programConfig">Program configuration to populate</param>
+/// <returns>Whether or not the program configuration was populated.</returns>
 bool
 ParseArgs(ArgumentParser* argParser, int argc, char* argv[], ProgramConfiguration* programConfig) {
     bool result = false;
@@ -40,7 +44,9 @@ ParseArgs(ArgumentParser* argParser, int argc, char* argv[], ProgramConfiguratio
 
     argParser->Parse(argc, argv);
 
-    if (!argParser->HasOption(USAGE_OPTION)) {
+    result = !argParser->HasOption(USAGE_OPTION);
+
+    if (result) {
         programConfig->ConnectionString = argParser->GetValue(CONNECTION_OPTION);
         programConfig->DatabaseName = argParser->GetValue(DATABASE_OPTION);
         programConfig->Password = argParser->GetValue(PASSWORD_OPTION);
@@ -61,7 +67,8 @@ main(int argc, char* argv[]) {
     cout << argParser.DumpArgs(argc, argv);
 
     if (!ParseArgs(&argParser, argc, argv, &programConfig)) {
-        cout << "\n" << argParser.Usage() << "\n";
+
+        cout << endl << argParser.Usage() << endl;
 
         return -1;
     }
@@ -74,17 +81,17 @@ main(int argc, char* argv[]) {
     cout << "Database Name: \"" << programConfig.DatabaseName << "\"\n";
     cout << "Password     : \"" << programConfig.Password << "\"\n\n\n";
 
-    wchar_t* connectionString = ConvertToWideCharT(programConfig.ConnectionString);
+    // Need a non-const wchar_t* for InitializeDBDefence()
+
     wchar_t* databaseName = ConvertToWideCharT(programConfig.DatabaseName);
     wchar_t* password = ConvertToWideCharT(programConfig.Password);
     const wchar_t* dllPath = LR"(C:\tmp\DbDefence\dbd_clnt.dll)";
 
     InitializeDBDefence(databaseName, password, dllPath);
 
-    ReadDatabase(connectionString);
+    ReadDatabase(ConvertToWideString(programConfig.ConnectionString));
 
-    free(connectionString);
-    free(databaseName); 
+    free(databaseName);
     free(password);
 
     return 0;

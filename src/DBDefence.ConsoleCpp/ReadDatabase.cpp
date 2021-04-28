@@ -113,7 +113,7 @@ void ReadDatabase1(const wchar_t* connectionString) {
     }
 }
 
-SQLRETURN ReadDatabase(const wchar_t* connectionString) {
+SQLRETURN ReadDatabase(wstring connectionString) {
 
     const int BUFFER_SIZE = 255;
 

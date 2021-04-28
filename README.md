@@ -53,7 +53,7 @@ you can follow these steps to build it on your own.)*
 * Enter a **super secret** password, I chose:
   * `SuperSecretPassword` which was not complex enough
   * `Id.Like.2.Encrypt_This!NOW!` which passed muster
-* The Encryptor will not encrypt if there are any connects to the database.
+* The Encryptor will not encrypt if there are any connections to the database.
   * Close all connections from SSMS
 * Once encrypted you will get errors when attempting to open the database objects using SSMS
   * Any queries will fail unless access is given to it

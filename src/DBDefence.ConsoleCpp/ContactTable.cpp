@@ -2,6 +2,10 @@
 
 #include "ContactTable.h"
 
+/// <summary>
+/// Sets up the columns and statement for the Contact table.
+/// </summary>
+/// <param name="connection">Database connection</param>
 ContactTable::ContactTable(DBConnection* connection)
     : DBTable(connection, wstring(L"Contact"), NULL) {
 
@@ -19,5 +23,5 @@ ContactTable::ContactTable(DBConnection* connection)
 /// <param name="rowData"></param>
 void
 ContactTable::OutputRow() {
-    wcout << _row->ColumnValues() << L"\n";
+    wcout << _row->ColumnValues() << endl;
 }

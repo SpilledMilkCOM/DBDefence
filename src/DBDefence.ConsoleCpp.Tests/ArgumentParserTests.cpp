@@ -66,6 +66,16 @@ public:
         delete(test);
     }
 
+    TEST_METHOD(AddOption_ExpectedException_WhenOptionIsNull) {
+        ArgumentParser* test = ConstructTestObject();
+
+        auto anon = [test]() { return test->AddOption(NULL); };
+
+        Assert::ExpectException<exception>(anon);
+
+        delete(test);
+    }
+
     TEST_METHOD(DumpArgs_Displays_RepresentativeArguments) {
         ArgumentParser* test = ConstructTestObject();
         char* argv[] = { "C:\\tmp\\program.exe",  "-a", "Avalue", "-b", "Bvalue" };
@@ -80,22 +90,14 @@ public:
     TEST_METHOD(GetValue_ThrowsException_WhenValueIsNotProvided) {
         ArgumentParser* test = ConstructTestObjectWithOptions();
         char* argv[] = { "C:\\tmp\\program.exe",  "-a", "-b", "Bvalue" };
-        bool exceptionThrown = false;
 
         test->Parse(4, argv);
 
-        try {
-            test->GetValue(TEST_OPTION);
+        // unfortunately you cannot send a const into the del
 
-        } catch (...) {
-            exceptionThrown = true;
-        }
+        auto anon = [test]() { return test->GetValue("-a"); };
 
-        Assert::IsTrue(exceptionThrown, L"Exception was not thrown.");
-
-        // Could not wrap this up sufficiently.  :(
-
-        // Assert::ExpectException<exception, string>(test->GetValue(TEST_OPTION));
+        Assert::ExpectException<exception>(anon);
 
         delete(test);
     }
