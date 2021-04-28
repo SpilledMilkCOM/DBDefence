@@ -5,12 +5,14 @@
 using namespace std;
 
 /// <summary>
-/// This class abstracts out the logging so all of the classes are not including <iostream>
+/// This class implements the ILogger interface and abstracts out the logging so all of the classes are not including <iostream>
 /// </summary>
 
 class LoggerStdOut : public ILogger {
 
 public:
+
+    // Even though the methods are defined in the interface, you need to tell the compiler that you WILL be implementing these in this class.
 
     void Log(string message);
     void Log(wstring message);
