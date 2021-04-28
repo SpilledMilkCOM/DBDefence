@@ -78,6 +78,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\git\DBDefence\src\CommandLineParser;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -139,8 +140,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ArgumentOption.cpp" />
-    <ClCompile Include="ArgumentParser.cpp" />
     <ClCompile Include="ContactTable.cpp" />
     <ClCompile Include="DBColumn.cpp" />
     <ClCompile Include="DBConnection.cpp" />
@@ -157,8 +156,6 @@
     <ClCompile Include="StringUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ArgumentOption.h" />
-    <ClInclude Include="ArgumentParser.h" />
     <ClInclude Include="ContactTable.h" />
     <ClInclude Include="DBColumn.h" />
     <ClInclude Include="DBConnection.h" />
@@ -175,6 +172,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommandLineParser\CommandLineParser.vcxproj">
+      <Project>{5f3a8d3f-847d-46fc-b30a-4e0099962b4b}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

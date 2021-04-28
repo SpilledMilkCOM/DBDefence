@@ -57,12 +57,6 @@
     <ClCompile Include="DBStatement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ArgumentParser.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ArgumentOption.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GetPassword.h">
@@ -102,12 +96,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DBStatement.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ArgumentParser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ArgumentOption.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

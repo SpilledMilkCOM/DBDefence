@@ -34,3 +34,4 @@ or possibly take SQL statement (which might be too open).
   * new/delete calls constructor/destructor, malloc/free does not.
 * [ASCII Characters](https://www.asciihex.com/)
 * [C++ Reverse Disassembly](https://www.codeproject.com/articles/4210/c-reverse-disassembly)
+* [Trouble Shooting Code Coverage](https://docs.microsoft.com/en-us/visualstudio/test/troubleshooting-code-coverage?view=vs-2019)

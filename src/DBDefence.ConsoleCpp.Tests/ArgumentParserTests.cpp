@@ -2,13 +2,14 @@
 #include "CppUnitTest.h"
 
 // Need to also link in the ArgumentParser.obj
-#include "../DBDefence.ConsoleCpp/ArgumentParser.h"
+#include "ArgumentParser.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace DBDefenceConsoleCppTests {
 
     TEST_CLASS(ArgumentParserTests) {
+
 private:
 
     const string TEST_OPTION = "-a";
@@ -81,6 +82,5 @@ private:
 
         return result;
     }
-
     };
 }
