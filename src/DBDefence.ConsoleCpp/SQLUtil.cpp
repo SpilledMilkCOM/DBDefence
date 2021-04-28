@@ -1,9 +1,10 @@
+#include "LoggerStdOut.h"
 #include "SQLUtil.h"
 #include "StringUtil.h"
 
 //----==== CONSTRUCTOR(S) / DESTRUCTOR(S) ====-----------------------------------------------------
 
-SQLUtil::SQLUtil(LoggerStdOut* logger) {
+SQLUtil::SQLUtil(ILogger* logger) {
     _loggerAllocated = logger == NULL;
     // Where the hell is coalesce??
     _logger = (_loggerAllocated) ? new LoggerStdOut : logger;

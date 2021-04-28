@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ILogger.h"
+#include <string>
 
 using namespace std;
 
@@ -8,10 +8,10 @@ using namespace std;
 /// This class abstracts out the logging so all of the classes are not including <iostream>
 /// </summary>
 
-class LoggerStdOut : public ILogger {
+class ILogger {
 
 public:
 
-    void Log(string message);
-    void Log(wstring message);
+    virtual void Log(string message) = 0;
+    virtual void Log(wstring message) = 0;
 };

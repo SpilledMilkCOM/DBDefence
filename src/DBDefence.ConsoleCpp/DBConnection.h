@@ -5,7 +5,6 @@
 #include <Windows.h>
 #include <sqlext.h>         // MUST include Windows.h above
 
-#include "LoggerStdOut.h"
 #include "SQLUtil.h"
 
 using namespace std;

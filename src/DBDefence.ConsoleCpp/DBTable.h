@@ -17,7 +17,7 @@ protected:
 private:
 
     DBConnection* _connection = NULL;
-    LoggerStdOut* _logger = NULL;
+    ILogger* _logger = NULL;
     bool _allocatedDefault = false;
     SQLUtil* _sqlUtil = NULL;
     DBStatement* _statement = NULL;
