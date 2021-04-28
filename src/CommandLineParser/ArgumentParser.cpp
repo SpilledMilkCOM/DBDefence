@@ -109,8 +109,13 @@ ArgumentParser::Parse(int argc, char* argv[]) {
     for (ArgumentOption* option : _options) {
         int index = FindArgument(option->Option(), argc, argv);
 
-        if (index >= 0 && index + 1 < argc) {
-            option->Found(true);
+        option->Found(index >= 0);
+
+        // If the option was found and there is another argument that is NOT an option.
+        // ex:  program.exe -a aValue -b -c
+        // *** -c CANNOT be the value for -b (if -c is defined as an option) ***
+
+        if (index >= 0 && index + 1 < argc && FindOption(argv[index+1]) == NULL) {
 
             option->Value(argv[index+1]);
         }
@@ -119,17 +124,21 @@ ArgumentParser::Parse(int argc, char* argv[]) {
     // TODO: Look for missing required options here.
 }
 
+/// <summary>
+/// 
+/// </summary>
+/// <returns></returns>
 string
 ArgumentParser::Usage() {
-    string result = "Usage: " + _programName;
+    string result = "Usage: " + _programName + " ";
 
     for (ArgumentOption* option : _options) {
         if (option->Required()) {
-            result += " <";
+            result += "<";
         } else {
-            result += " [";
+            result += "[";
         }
-            
+
         result += option->Option();
 
         if (!option->ValueName().empty()) {
@@ -143,11 +152,15 @@ ArgumentParser::Usage() {
         }
     }
 
+    result += "\n";
+
     for (ArgumentOption* option : _options) {
         result += "\n" + option->Option() + "  " + option->Description();
 
         // TODO: Make the description line up (prettier)
     }
+
+    result += "\n[]  Argument is optional.";
 
     return result;
 }
