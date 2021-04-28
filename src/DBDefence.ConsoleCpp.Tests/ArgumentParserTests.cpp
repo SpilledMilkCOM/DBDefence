@@ -31,6 +31,8 @@ public:
         string actual = test->Usage();
 
         Assert::AreEqual(string("Usage: " + PROGRAM_NAME + " \n\n[]  Argument is optional."), actual, L"The usage text did not match");
+
+        delete(test);
     }
 
     TEST_METHOD(AddOption_Succeeds_AddsAnOption) {
@@ -43,6 +45,25 @@ public:
 
         Assert::IsTrue(test->HasOption(TEST_OPTION), L"The option should have been added");
         Assert::IsTrue(test->HasOption(TEST_OPTION2), L"The option should have been added");
+
+        delete(test);
+    }
+
+    TEST_METHOD(AddOption_ThrowsException_WhenOptionIsNull) {
+        ArgumentParser* test = ConstructTestObject();
+        bool exceptionThrown = false;
+        string message;
+
+        try {
+            test->AddOption(NULL);
+        } catch (exception ex) {
+            exceptionThrown = true;
+            message = ex.what();
+        }
+        Assert::IsTrue(exceptionThrown, L"Exception was not thrown.");
+        Assert::AreEqual(string("'option' must be defined."), message, L"The exception message did not match.");
+
+        delete(test);
     }
 
     TEST_METHOD(DumpArgs_Displays_RepresentativeArguments) {
@@ -52,6 +73,8 @@ public:
         string actual = test->DumpArgs(5, argv);
 
         Assert::AreEqual(string("argc=5\nargv[0]=C:\\tmp\\program.exe\nargv[1]=-a\nargv[2]=Avalue\nargv[3]=-b\nargv[4]=Bvalue\n"), actual, L"The usage text did not match");
+
+        delete(test);
     }
 
     TEST_METHOD(GetValue_ThrowsException_WhenValueIsNotProvided) {
@@ -73,6 +96,8 @@ public:
         // Could not wrap this up sufficiently.  :(
 
         // Assert::ExpectException<exception, string>(test->GetValue(TEST_OPTION));
+
+        delete(test);
     }
 
     TEST_METHOD(GetValue_ThrowsSpecificException_WhenValueIsNotProvided) {
@@ -86,27 +111,32 @@ public:
         try {
             test->GetValue(TEST_OPTION);
 
-        } catch (exception* ex) {
+        } catch (exception ex) {
             exceptionThrown = true;
-            if (ex != NULL) {
-                message = ex->what();
-           }
+            message = ex.what();
+
         }
 
         Assert::IsTrue(exceptionThrown, L"Exception was not thrown.");
-        Assert::AreEqual("The option '" + TEST_OPTION + "' is required.", message, L"Exception was not thrown.");
+        Assert::AreEqual("The option '" + TEST_OPTION + "' is required.", message, L"The exception message did not match.");
+
+        delete(test);
     }
 
     TEST_METHOD(HasOption_ReturnsFalse_WithNoOptionsInList) {
         ArgumentParser* test = ConstructTestObject();
 
         Assert::IsFalse(test->HasOption(TEST_OPTION), L"The option should not exist");
+
+        delete(test);
     }
 
     TEST_METHOD(HasOption_ReturnsFalse_FindingWrongOption) {
         ArgumentParser* test = ConstructTestObjectWithOptions();
 
         Assert::IsFalse(test->HasOption(TEST_OPTION_WRONG), L"The option should not exist");
+
+        delete(test);
     }
 
     TEST_METHOD(HasOption_ReturnsTrue_FindingCorrectOption) {
@@ -117,6 +147,8 @@ public:
         test->Parse(5, argv);
 
         Assert::IsTrue(test->HasOption(TEST_OPTION), L"The option should exist");
+
+        delete(test);
     }
 
     TEST_METHOD(Parse_Succeeds_AbleToRetrieveValuesByOption) {
@@ -130,6 +162,8 @@ public:
 
         Assert::AreEqual(string(argv[2]), actualOption, L"The option was not parsed correctly");
         Assert::AreEqual(string(argv[4]), actualOption2, L"The option was not parsed correctly");
+
+        delete(test);
     }
 
     TEST_METHOD(Usage_Displays_WithNoOptionsInList) {
@@ -138,6 +172,8 @@ public:
         string actual = test->Usage();
 
         Assert::AreEqual(string("Usage: " + PROGRAM_NAME + " \n\n[]  Argument is optional."), actual, L"The usage text did not match");
+
+        delete(test);
     }
 
     TEST_METHOD(Usage_Displays_WithCorrectOptions) {
@@ -146,6 +182,8 @@ public:
         string actual = test->Usage();
 
         Assert::AreEqual(string("Usage: " + PROGRAM_NAME + " <-a aValue><-b bValue>\n\n-a  This is 'a' Value description\n-b  This is 'b' Value description\n[]  Argument is optional."), actual, L"The usage text did not match");
+
+        delete(test);
     }
 
     TEST_METHOD(Usage_Displays_WithOptionalOption) {
@@ -156,6 +194,8 @@ public:
         string actual = test->Usage();
 
         Assert::AreEqual(string("Usage: " + PROGRAM_NAME + " [-a]\n\n-a  This is 'a' Value description\n[]  Argument is optional."), actual, L"The usage text did not match");
+
+        delete(test);
     }
 
 private:

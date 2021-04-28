@@ -7,15 +7,15 @@ using namespace std;
 DBColumn::DBColumn(wstring name, int type, int size, int columnNumber) {
 
     if (name.empty()) {
-        throw new exception("'name' cannot be empty.");
+        throw exception("'name' cannot be empty.");
     }
 
     if (size < 1) {
-        throw new exception("'size' must be greater or equal to 1.");
+        throw exception("'size' must be greater or equal to 1.");
     }
 
     if (columnNumber < 1) {
-        throw new exception("'columnNumber' must be greater or equal to 1.");
+        throw exception("'columnNumber' must be greater or equal to 1.");
     }
 
     _name = name;

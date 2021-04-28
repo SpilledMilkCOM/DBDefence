@@ -10,7 +10,7 @@ DBConnection::DBConnection() {
 DBConnection::DBConnection(wstring connectionString, SQLUtil* sqlUtil) {
 
     if (sqlUtil == NULL) {
-        throw new exception("'sqlUtil' must be defined.");
+        throw exception("'sqlUtil' must be defined.");
     }
 
     _connectionString = connectionString;

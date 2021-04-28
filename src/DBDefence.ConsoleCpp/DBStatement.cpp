@@ -3,19 +3,19 @@
 DBStatement::DBStatement(wstring statement, DBConnection* connection, DBRow* row, SQLUtil* sqlUtil) {
 
     if (statement.empty()) {
-        throw new exception("'statement' must be defined.");
+        throw exception("'statement' must be defined.");
     }
 
     if (connection == NULL) {
-        throw new exception("'connection' must be defined.");
+        throw exception("'connection' must be defined.");
     }
 
     if (row == NULL) {
-        throw new exception("'row' must be defined.");
+        throw exception("'row' must be defined.");
     }
 
     if (sqlUtil == NULL) {
-        throw new exception("'sqlUtil' must be defined.");
+        throw exception("'sqlUtil' must be defined.");
     }
 
     _row = row;

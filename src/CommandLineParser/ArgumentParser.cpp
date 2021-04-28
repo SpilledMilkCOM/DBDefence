@@ -23,7 +23,7 @@ ArgumentParser::~ArgumentParser() {
 bool
 ArgumentParser::AddOption(ArgumentOption* option) {
     if (option == NULL) {
-        throw new exception("'option' must be defined.");
+        throw exception("'option' must be defined.");
     }
 
     bool added = !HasOption(option->Option());
@@ -79,7 +79,7 @@ ArgumentParser::GetValue(string optionFlag) {
         if (result.empty() && option->Required()) {
             string message = "The option '" + optionFlag + "' is required.";
 
-            throw new exception(message.c_str());
+            throw exception(message.c_str());
         }
     }
 
