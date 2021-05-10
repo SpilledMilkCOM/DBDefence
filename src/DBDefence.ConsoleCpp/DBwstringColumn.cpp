@@ -4,15 +4,15 @@ using namespace std;
 
 //----==== CONSTRUCTOR(S) / DESTRUCTOR(S) ====-----------------------------------------------------
 
-DBwstringColumn::DBwstringColumn(wstring name, int type, int size, int columnNumber)
-    : DBColumn(name, type, size, columnNumber) {
+DBwstringColumn::DBwstringColumn(wstring name, int size, int columnNumber)
+    : DBColumn(name, SQL_C_WCHAR, size, columnNumber) {
 
     _buffer = (SQLWCHAR*)malloc((_size + 1) * sizeof(SQLWCHAR));
     *_buffer = 0;
 }
 
-DBwstringColumn::DBwstringColumn(SQLHSTMT statementHandle, wstring name, int type, int size, int columnNumber)
-    : DBColumn(name, type, size, columnNumber) {
+DBwstringColumn::DBwstringColumn(SQLHSTMT statementHandle, wstring name, int size, int columnNumber)
+    : DBColumn(name, SQL_C_WCHAR, size, columnNumber) {
 
     Bind(statementHandle);
 }

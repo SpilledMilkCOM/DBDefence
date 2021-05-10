@@ -12,8 +12,8 @@ ContactTable::ContactTable(DBConnection* connection)
 
     const int BUFFER_SIZE = 255;
 
-    _row->AddColumn(new DBwstringColumn(L"FirstName", SQL_C_WCHAR, BUFFER_SIZE, 1));
-    _row->AddColumn(new DBwstringColumn(L"LastName", SQL_C_WCHAR, BUFFER_SIZE, 2));
+    _row->AddColumn(new DBwstringColumn(L"FirstName", BUFFER_SIZE, 1));
+    _row->AddColumn(new DBwstringColumn(L"LastName", BUFFER_SIZE, 2));
 
     Statement(L"SELECT FirstName, LastName FROM dbo.Contact");
 }

@@ -22,8 +22,8 @@ private:
 
 public:
 
-    DBwstringColumn(wstring name, int type, int size, int columnNumber);
-    DBwstringColumn(SQLHSTMT statementHandle, wstring name, int type, int size, int columnNumber);
+    DBwstringColumn(wstring name, int size, int columnNumber);
+    DBwstringColumn(SQLHSTMT statementHandle, wstring name, int size, int columnNumber);
     ~DBwstringColumn();
 
     SQLRETURN Bind(SQLHSTMT statementHandle);

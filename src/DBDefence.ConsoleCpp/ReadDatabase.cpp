@@ -82,8 +82,8 @@ void ReadDatabase1(const wchar_t* connectionString) {
                         DBRow contactRow(statementHandle);
                         bool endOfData = false;
 
-                        contactRow.AddColumn(new DBwstringColumn(L"FirstName", SQL_C_WCHAR, BUFFER_SIZE, 1));
-                        contactRow.AddColumn(new DBwstringColumn(L"LastName", SQL_C_WCHAR, BUFFER_SIZE, 2));
+                        contactRow.AddColumn(new DBwstringColumn(L"FirstName", BUFFER_SIZE, 1));
+                        contactRow.AddColumn(new DBwstringColumn(L"LastName", BUFFER_SIZE, 2));
 
                         std::wcout << contactRow.ColumnNames() << "\n";
 
