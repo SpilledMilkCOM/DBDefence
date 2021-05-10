@@ -9,12 +9,14 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[Contact](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[FirstName] [nvarchar](128) NOT NULL,
-	[LastName] [nvarchar](128) NOT NULL,
-	[Password] [nchar](64) NOT NULL,
-	[Email] [nvarchar](128) NULL,
-	[Phone] [nvarchar](128) NULL,
+	  [Id]				[int] IDENTITY(1,1)		NOT NULL
+	, [FirstName]		[nvarchar](128)			NOT NULL
+	, [LastName]		[nvarchar](128)			NOT NULL
+	, [Password]		[nchar](64)				NOT NULL
+	, [Email]			[nvarchar](128)			NULL
+	, [Phone]			[nvarchar](128)			NULL
+	, [NetWorth]		DECIMAL(15, 3)			NOT NULL
+	, [Rank]			INT						NOT NULL
  CONSTRAINT [PK_Contact] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -23,3 +25,4 @@ CREATE TABLE [dbo].[Contact](
 GO
 
 
+-- DROP TABLE [dbo].[Contact]

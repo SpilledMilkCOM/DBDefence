@@ -1,7 +1,9 @@
 USE TestDB
 
-INSERT INTO dbo.Contact ([FirstName],[LastName],[Password],[Email],[Phone]) VALUES ('Parker','Smart','ThisShouldBeEncrypted','parker.smart@gmail.com','3035551211')
-INSERT INTO dbo.Contact ([FirstName],[LastName],[Password],[Email],[Phone]) VALUES ('John','Doe','password','john.doe@gmail.com','3035551212')
+DELETE FROM dbo.Contact
+
+INSERT INTO dbo.Contact ([FirstName],[LastName],[Password],[Email],[Phone],[NetWorth],[Rank]) VALUES ('Parker','Smart','ThisShouldBeEncrypted','parker.smart@gmail.com','3035551211', 10000000000.0, 100)
+INSERT INTO dbo.Contact ([FirstName],[LastName],[Password],[Email],[Phone],[NetWorth],[Rank]) VALUES ('John','Doe','password','john.doe@gmail.com','3035551212', 1111.11, 100)
 
 USE TestDBEncrypted
 
