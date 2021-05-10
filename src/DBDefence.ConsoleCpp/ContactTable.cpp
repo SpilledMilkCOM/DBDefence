@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "ContactTable.h"
+#include "DBwstringColumn.h"
 
 /// <summary>
 /// Sets up the columns and statement for the Contact table.
@@ -11,8 +12,8 @@ ContactTable::ContactTable(DBConnection* connection)
 
     const int BUFFER_SIZE = 255;
 
-    _row->AddColumn(new DBColumn(L"FirstName", SQL_C_WCHAR, BUFFER_SIZE, 1));
-    _row->AddColumn(new DBColumn(L"LastName", SQL_C_WCHAR, BUFFER_SIZE, 2));
+    _row->AddColumn(new DBwstringColumn(L"FirstName", SQL_C_WCHAR, BUFFER_SIZE, 1));
+    _row->AddColumn(new DBwstringColumn(L"LastName", SQL_C_WCHAR, BUFFER_SIZE, 2));
 
     Statement(L"SELECT FirstName, LastName FROM dbo.Contact");
 }

@@ -12,6 +12,8 @@ class LoggerStdOut : public ILogger {
 
 public:
 
+    LoggerStdOut();
+
     // Even though the methods are defined in the interface, you need to tell the compiler that you WILL be implementing these in this class.
 
     void Log(string message);

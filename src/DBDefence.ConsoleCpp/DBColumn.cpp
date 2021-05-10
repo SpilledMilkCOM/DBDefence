@@ -22,9 +22,6 @@ DBColumn::DBColumn(wstring name, int type, int size, int columnNumber) {
     _type = type;
     _size = size;
     _columnNumber = columnNumber;
-
-    _buffer = (SQLWCHAR*)malloc((_size + 1) * sizeof(SQLWCHAR));
-    *_buffer = 0;
 }
 
 DBColumn::DBColumn(SQLHSTMT statementHandle, wstring name, int type, int size, int columnNumber)
@@ -34,12 +31,6 @@ DBColumn::DBColumn(SQLHSTMT statementHandle, wstring name, int type, int size, i
 }
 
 DBColumn::~DBColumn() {
-    if (_buffer != NULL) {
-        // TODO: MEMORY LEAK!!
-        //free(_buffer);
-        _buffer = NULL;
-    }
-
     // TODO: DO I NEED TO FREE THE std string and wstring??
 }
 
@@ -47,12 +38,7 @@ DBColumn::~DBColumn() {
 
 SQLRETURN
 DBColumn::Bind(SQLHSTMT statementHandle) {
-
-    SQLLEN actualLength = 0;
-
-    _status = SQLBindCol(statementHandle, _columnNumber, _type, _buffer, _size + 1, &actualLength);
-
-    return _status;
+    throw exception("NOT IMPLEMENTED");
 }
 
 //----==== PROPERTIES ====-------------------------------------------------------------------------
@@ -65,9 +51,4 @@ DBColumn::Name() {
 SQLRETURN
 DBColumn::Status() {
     return _status;
-}
-
-wstring
-DBColumn::Value() {
-    return wstring(_buffer);
 }

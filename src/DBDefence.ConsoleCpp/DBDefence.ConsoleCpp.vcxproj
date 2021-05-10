@@ -148,6 +148,7 @@
     <ClCompile Include="DBRow.cpp" />
     <ClCompile Include="DBStatement.cpp" />
     <ClCompile Include="DBTable.cpp" />
+    <ClCompile Include="DBwstringColumn.cpp" />
     <ClCompile Include="GetPassword.cpp" />
     <ClCompile Include="LoggerStdOut.cpp" />
     <ClCompile Include="ProgramConfiguration.cpp" />
@@ -163,7 +164,9 @@
     <ClInclude Include="DBRow.h" />
     <ClInclude Include="DBStatement.h" />
     <ClInclude Include="DBTable.h" />
+    <ClInclude Include="DBwstringColumn.h" />
     <ClInclude Include="GetPassword.h" />
+    <ClInclude Include="IColumn.h" />
     <ClInclude Include="ILogger.h" />
     <ClInclude Include="SQLUtil.h" />
     <ClInclude Include="LoggerStdOut.h" />

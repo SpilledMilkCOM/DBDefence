@@ -77,7 +77,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\git\DBDefence\src\CommandLineParser;$(IncludePath)</IncludePath>
+    <IncludePath>C:\git\DBDefence\src\CommandLineParser;C:\git\DBDefence\src\DBDefence.ConsoleCpp;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
@@ -160,6 +160,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ArgumentParserTests.cpp" />
+    <ClCompile Include="LoggerStdOutTests.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -173,6 +174,9 @@
   <ItemGroup>
     <ProjectReference Include="..\CommandLineParser\CommandLineParser.vcxproj">
       <Project>{5f3a8d3f-847d-46fc-b30a-4e0099962b4b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\DBDefence.ConsoleCpp\DBDefence.ConsoleCpp.vcxproj">
+      <Project>{3da181d9-7063-4cf5-893d-4ee46de5f264}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

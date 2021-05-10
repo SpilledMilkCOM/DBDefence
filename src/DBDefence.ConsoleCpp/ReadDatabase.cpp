@@ -5,6 +5,7 @@
 #include "ContactTable.h"
 #include "DBConnection.h"
 #include "DBRow.h"
+#include "DBwstringColumn.h"
 #include "StringUtil.h"
 
 // REF: https://docs.microsoft.com/en-us/sql/odbc/reference/syntax/odbc-api-reference?view=sql-server-ver15
@@ -81,8 +82,8 @@ void ReadDatabase1(const wchar_t* connectionString) {
                         DBRow contactRow(statementHandle);
                         bool endOfData = false;
 
-                        contactRow.AddColumn(new DBColumn(L"FirstName", SQL_C_WCHAR, BUFFER_SIZE, 1));
-                        contactRow.AddColumn(new DBColumn(L"LastName", SQL_C_WCHAR, BUFFER_SIZE, 2));
+                        contactRow.AddColumn(new DBwstringColumn(L"FirstName", SQL_C_WCHAR, BUFFER_SIZE, 1));
+                        contactRow.AddColumn(new DBwstringColumn(L"LastName", SQL_C_WCHAR, BUFFER_SIZE, 2));
 
                         std::wcout << contactRow.ColumnNames() << "\n";
 

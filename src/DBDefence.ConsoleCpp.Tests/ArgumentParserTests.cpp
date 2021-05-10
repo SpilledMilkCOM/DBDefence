@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 
-// Need to also link in the ArgumentParser.obj
 #include "ArgumentParser.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
