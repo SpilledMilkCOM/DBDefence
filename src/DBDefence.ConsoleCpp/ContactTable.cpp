@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "ContactTable.h"
+#include "DBintColumn.h"
 #include "DBwstringColumn.h"
 
 /// <summary>
@@ -14,8 +15,9 @@ ContactTable::ContactTable(DBConnection* connection)
 
     _row->AddColumn(new DBwstringColumn(L"FirstName", BUFFER_SIZE, 1));
     _row->AddColumn(new DBwstringColumn(L"LastName", BUFFER_SIZE, 2));
+    _row->AddColumn(new DBintColumn(L"Rank", 3));
 
-    Statement(L"SELECT FirstName, LastName FROM dbo.Contact");
+    Statement(L"SELECT " + _row->ColumnNames() + L" FROM dbo.Contact");
 }
 
 /// <summary>

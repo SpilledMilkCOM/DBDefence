@@ -145,6 +145,7 @@
     <ClCompile Include="DBConnection.cpp" />
     <ClCompile Include="DBDefence.ConsoleCpp.cpp" />
     <ClCompile Include="DbDefenceInit.cpp" />
+    <ClCompile Include="DBintColumn.cpp" />
     <ClCompile Include="DBRow.cpp" />
     <ClCompile Include="DBStatement.cpp" />
     <ClCompile Include="DBTable.cpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="DBColumn.h" />
     <ClInclude Include="DBConnection.h" />
     <ClInclude Include="DbDefenceInit.h" />
+    <ClInclude Include="DBintColumn.h" />
     <ClInclude Include="DBRow.h" />
     <ClInclude Include="DBStatement.h" />
     <ClInclude Include="DBTable.h" />

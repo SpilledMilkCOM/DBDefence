@@ -60,6 +60,9 @@
     <ClCompile Include="DBwstringColumn.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DBintColumn.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GetPassword.h">
@@ -108,6 +111,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DBwstringColumn.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DBintColumn.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
