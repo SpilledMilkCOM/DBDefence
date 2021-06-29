@@ -96,3 +96,4 @@ you can follow these steps to build it on your own.)*
 * [Documentation](https://www.database-encryption.com/support/dbdefence-documentation/)
 * [MS Understanding Identities](https://docs.microsoft.com/en-us/troubleshoot/iis/understanding-identities)
   * Has a good section on impersonation.
+* [sqlcmd Utility](https://docs.microsoft.com/en-us/sql/tools/sqlcmd-utility?view=sql-server-ver15)
