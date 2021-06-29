@@ -20,6 +20,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DBDefence.ConsoleCpp.Tests"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CommandLineParser", "src\CommandLineParser\CommandLineParser.vcxproj", "{5F3A8D3F-847D-46FC-B30A-4E0099962B4B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{0B37CFB9-2B7D-4A15-A8B7-4D8F61D92A40}"
+	ProjectSection(SolutionItems) = preProject
+		src\scripts\readDb.ps1 = src\scripts\readDb.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
